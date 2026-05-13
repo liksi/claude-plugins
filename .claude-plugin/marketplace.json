@@ -8,15 +8,6 @@
   "description": "Plugins internes Liksi pour Claude Code",
   "plugins": [
     {
-      "name": "code-review",
-      "source": "./plugins/code-review",
-      "description": "Skill de revue de code orienté Software Craftsmanship",
-      "version": "1.0.0",
-      "author": {
-        "name": "Liksi"
-      }
-    },
-    {
       "name": "critique-content",
       "source": "./plugins/critique-content",
       "description": "Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc)",
