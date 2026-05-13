@@ -5,7 +5,7 @@ Marketplace privé de plugins Claude Code pour les équipes Liksi.
 ## Ajouter ce marketplace
 
 ```
-/plugin marketplace add liksi/liksi-claude-plugins
+/plugin marketplace add liksi/claude-plugins
 ```
 
 ## Installer un plugin
