@@ -11,11 +11,12 @@ Marketplace privé de plugins Claude Code pour les équipes Liksi.
 ## Installer un plugin
 
 ```
-/plugin install code-review@liksi-tools
+/plugin install critique-content@liksi-tools
 ```
 
 ## Plugins disponibles
 
 | Plugin | Description |
 |--------|-------------|
-| `code-review` | Revue de code orientée Software Craftsmanship |
+| `critique-content` | Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc) |
+| `deslopify` | Supprime les tropes IA d'un texte pour lui donner un ton naturel et authentique |
