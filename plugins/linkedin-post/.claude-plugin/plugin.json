@@ -1,0 +1,5 @@
+{
+  "name": "linkedin-post",
+  "description": "Génère un post LinkedIn concis et expert à partir d'un article de blog Liksi",
+  "version": "1.0.0"
+}
