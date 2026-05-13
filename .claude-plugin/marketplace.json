@@ -24,6 +24,15 @@
       "author": {
         "name": "Liksi"
       }
+    },
+    {
+      "name": "linkedin-post",
+      "source": "./plugins/linkedin-post",
+      "description": "Génère un post LinkedIn concis et expert à partir d'un article de blog Liksi",
+      "version": "1.0.0",
+      "author": {
+        "name": "Liksi"
+      }
     }
   ]
 }
