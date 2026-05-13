@@ -1,0 +1,20 @@
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "liksi-tools",
+  "owner": {
+    "name": "Liksi",
+    "email": "tech@liksi.fr"
+  },
+  "description": "Plugins internes Liksi pour Claude Code",
+  "plugins": [
+    {
+      "name": "code-review",
+      "source": "./plugins/code-review",
+      "description": "Skill de revue de code orienté Software Craftsmanship",
+      "version": "1.0.0",
+      "author": {
+        "name": "Liksi"
+      }
+    }
+  ]
+}
