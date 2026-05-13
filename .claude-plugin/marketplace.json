@@ -15,6 +15,24 @@
       "author": {
         "name": "Liksi"
       }
+    },
+    {
+      "name": "critique-content",
+      "source": "./plugins/critique-content",
+      "description": "Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc)",
+      "version": "1.0.0",
+      "author": {
+        "name": "Liksi"
+      }
+    },
+    {
+      "name": "deslopify",
+      "source": "./plugins/deslopify",
+      "description": "Supprime les tropes IA d'un texte pour lui donner un ton naturel et authentique",
+      "version": "1.0.0",
+      "author": {
+        "name": "Liksi"
+      }
     }
   ]
 }
