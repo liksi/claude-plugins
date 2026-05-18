@@ -103,6 +103,21 @@
           "args": ["a11y-mcp"]
         }
       }
+    },
+    {
+      "name": "atlassian-mcp",
+      "source": "./plugins/atlassian-mcp",
+      "description": "Intégration Jira et Confluence via Atlassian MCP",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "author": {
+        "name": "Liksi"
+      },
+      "mcpServers": {
+        "atlassian": {
+          "url": "https://mcp.atlassian.com/v1/mcp/authv2"
+        }
+      }
     }
   ]
 }

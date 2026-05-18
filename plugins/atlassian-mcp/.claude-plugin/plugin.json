@@ -1,0 +1,10 @@
+{
+  "name": "atlassian-mcp",
+  "description": "Intégration Jira et Confluence via Atlassian MCP",
+  "version": "1.0.0",
+  "mcpServers": {
+    "atlassian": {
+      "url": "https://mcp.atlassian.com/v1/mcp/authv2"
+    }
+  }
+}
