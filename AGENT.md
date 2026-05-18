@@ -36,8 +36,57 @@ AGENT.md                   # Ce fichier
 
 1. Créer `plugins/<nom>/.claude-plugin/plugin.json`
 2. Créer `plugins/<nom>/skills/<nom>/SKILL.md`
-3. Mettre à jour `README.md` (tableau des plugins)
-4. Mettre à jour ce fichier (tableau des plugins)
+3. Ajouter l'entrée dans `.claude-plugin/marketplace.json` (voir schéma ci-dessous)
+4. Mettre à jour `README.md` (tableau des plugins)
+5. Mettre à jour ce fichier (tableau des plugins)
+
+## Schéma marketplace.json
+
+Fichier : `.claude-plugin/marketplace.json`
+
+### Structure globale
+
+```json
+{
+  "$schema": "https://code.claude.com/schemas/marketplace.json",
+  "name": "liksi-tools",
+  "owner": { "name": "Liksi", "email": "tech@liksi.fr" },
+  "description": "...",
+  "plugins": [ ... ]
+}
+```
+
+### Entrée plugin (obligatoire : `name` + `source`)
+
+```json
+{
+  "name": "mon-plugin",
+  "source": "./plugins/mon-plugin",
+  "description": "Ce que fait le plugin",
+  "version": "1.0.0",
+  "category": "content",
+  "author": { "name": "Liksi" }
+}
+```
+
+### Règles
+
+- `name` : kebab-case minuscule, identique au nom du dossier
+- `source` : chemin relatif depuis la racine du repo (commence par `./plugins/`)
+- `category` : **toujours renseigner**, en minuscule. Valeurs utilisées : `content`, `marketing`
+- `version` : bump obligatoire à chaque release (sinon les utilisateurs ne reçoivent pas la mise à jour)
+- Ne pas mettre de champ `skills` : les skills sont auto-découverts depuis `./skills/` dans le plugin
+- `description` et `version` dans `plugin.json` doivent être cohérents avec l'entrée marketplace
+
+### Champs optionnels disponibles
+
+| Champ | Type | Usage |
+|-------|------|-------|
+| `homepage` | string | URL de documentation |
+| `repository` | string | URL du dépôt source |
+| `license` | string | Identifiant SPDX (ex: `MIT`) |
+| `keywords` | array | Tags pour la recherche |
+| `tags` | array | Tags supplémentaires |
 
 ## Déploiement local d'un skill
 
