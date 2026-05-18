@@ -23,3 +23,4 @@ Marketplace privé de plugins Claude Code pour les équipes Liksi.
 | `linkedin-post` | Génère un post LinkedIn concis et expert à partir d'un article de blog Liksi |
 | `playwright-mcp` | Automatisation navigateur via Playwright MCP |
 | `context7-mcp` | Documentation à jour des librairies via Context7 MCP |
+| `sequential-thinking-mcp` | Raisonnement structuré étape par étape via Sequential Thinking MCP |

@@ -33,6 +33,7 @@ AGENT.md                   # Ce fichier
 | `linkedin-post` | `linkedin-post` | Génère un post LinkedIn à partir d'un article de blog Liksi |
 | `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
 | `context7-mcp` | MCP server | Documentation à jour des librairies |
+| `sequential-thinking-mcp` | MCP server | Raisonnement structuré étape par étape |
 
 ## Ajouter un plugin
 

@@ -59,6 +59,16 @@
       "author": {
         "name": "Liksi"
       }
+    },
+    {
+      "name": "sequential-thinking-mcp",
+      "source": "./plugins/sequential-thinking-mcp",
+      "description": "Raisonnement structuré étape par étape via Sequential Thinking MCP",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "author": {
+        "name": "Liksi"
+      }
     }
   ]
 }
