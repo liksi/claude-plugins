@@ -13,6 +13,7 @@
       "description": "Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc)",
       "version": "1.0.0",
       "category": "content",
+      "skills": ["critique-content"],
       "author": {
         "name": "Liksi"
       }
@@ -23,6 +24,7 @@
       "description": "Supprime les tropes IA d'un texte pour lui donner un ton naturel et authentique",
       "version": "1.0.0",
       "category": "content",
+      "skills": ["deslopify"],
       "author": {
         "name": "Liksi"
       }
@@ -33,6 +35,7 @@
       "description": "Génère un post LinkedIn concis et expert à partir d'un article de blog Liksi",
       "version": "1.0.0",
       "category": "marketing",
+      "skills": ["linkedin-post"],
       "author": {
         "name": "Liksi"
       }
