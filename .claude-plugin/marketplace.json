@@ -87,6 +87,22 @@
           "args": ["-y", "@modelcontextprotocol/server-sequential-thinking@latest"]
         }
       }
+    },
+    {
+      "name": "a11y-mcp",
+      "source": "./plugins/a11y-mcp",
+      "description": "Audit d'accessibilité (WCAG) via a11y MCP",
+      "version": "1.0.0",
+      "category": "developer-tools",
+      "author": {
+        "name": "Liksi"
+      },
+      "mcpServers": {
+        "priyankark-a11y-mcp": {
+          "command": "npx",
+          "args": ["a11y-mcp"]
+        }
+      }
     }
   ]
 }

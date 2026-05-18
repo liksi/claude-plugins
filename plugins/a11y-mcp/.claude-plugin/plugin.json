@@ -1,0 +1,11 @@
+{
+  "name": "a11y-mcp",
+  "description": "Audit d'accessibilité (WCAG) via a11y MCP",
+  "version": "1.0.0",
+  "mcpServers": {
+    "priyankark-a11y-mcp": {
+      "command": "npx",
+      "args": ["a11y-mcp"]
+    }
+  }
+}
