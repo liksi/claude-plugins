@@ -31,6 +31,8 @@ AGENT.md                   # Ce fichier
 | `critique-content` | `critique-content` | Critique structurée d'un contenu tech (slides, article, doc) |
 | `deslopify` | `deslopify` | Supprime les tropes IA d'un texte |
 | `linkedin-post` | `linkedin-post` | Génère un post LinkedIn à partir d'un article de blog Liksi |
+| `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
+| `context7-mcp` | MCP server | Documentation à jour des librairies |
 
 ## Ajouter un plugin
 
@@ -87,6 +89,14 @@ Fichier : `.claude-plugin/marketplace.json`
 | `license` | string | Identifiant SPDX (ex: `MIT`) |
 | `keywords` | array | Tags pour la recherche |
 | `tags` | array | Tags supplémentaires |
+
+## Générer le frontend du marketplace
+
+```bash
+npx claude-marketplace-browser --marketplace-path . --marketplace-url git@github.com:liksi/claude-plugins.git
+```
+
+Produit un site statique dans `dist/` (ignoré par git).
 
 ## Déploiement local d'un skill
 

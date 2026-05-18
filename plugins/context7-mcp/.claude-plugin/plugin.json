@@ -1,0 +1,11 @@
+{
+  "name": "context7-mcp",
+  "description": "Documentation à jour des librairies via Context7 MCP",
+  "version": "1.0.0",
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"]
+    }
+  }
+}

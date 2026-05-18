@@ -1,0 +1,11 @@
+{
+  "name": "playwright-mcp",
+  "description": "Automatisation navigateur via Playwright MCP",
+  "version": "1.0.0",
+  "mcpServers": {
+    "playwright": {
+      "command": "npx",
+      "args": ["@playwright/mcp@latest"]
+    }
+  }
+}
