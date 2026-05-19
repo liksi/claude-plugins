@@ -28,9 +28,7 @@ AGENT.md                   # Ce fichier
 
 | Plugin | Skill principal | Rôle |
 |--------|----------------|------|
-| `critique-content` | `critique-content` | Critique structurée d'un contenu tech (slides, article, doc) |
-| `deslopify` | `deslopify` | Supprime les tropes IA d'un texte |
-| `linkedin-post` | `linkedin-post` | Génère un post LinkedIn à partir d'un article de blog Liksi |
+| `tech-scribe-plugin` | `critique-content`, `deslopify`, `linkedin-post` | Outils rédactionnels tech : critique, deslopify, post LinkedIn |
 | `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
 | `context7-mcp` | MCP server | Documentation à jour des librairies |
 | `sequential-thinking-mcp` | MCP server | Raisonnement structuré étape par étape |

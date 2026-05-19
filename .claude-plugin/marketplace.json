@@ -8,16 +8,8 @@
   "description": "Plugins internes Liksi pour Claude Code",
   "plugins": [
     {
-      "name": "critique-content",
-      "source": "./plugins/critique-content"
-    },
-    {
-      "name": "deslopify",
-      "source": "./plugins/deslopify"
-    },
-    {
-      "name": "linkedin-post",
-      "source": "./plugins/linkedin-post"
+      "name": "tech-scribe-plugin",
+      "source": "./plugins/tech-scribe-plugin"
     },
     {
       "name": "playwright-mcp",

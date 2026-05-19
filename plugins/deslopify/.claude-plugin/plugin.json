@@ -1,9 +1,0 @@
-{
-  "name": "deslopify",
-  "description": "Supprime les tropes IA d'un texte pour lui donner un ton naturel et authentique",
-  "version": "1.0.0",
-  "author": {
-    "name": "Mathieu Durand"
-  },
-  "skills": "./skills/"
-}

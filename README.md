@@ -11,16 +11,14 @@ Marketplace privé de plugins Claude Code pour les équipes Liksi.
 ## Installer un plugin
 
 ```
-/plugin install critique-content@liksi-tools
+/plugin install tech-scribe-plugin@liksi-tools
 ```
 
 ## Plugins disponibles
 
 | Plugin | Description |
 |--------|-------------|
-| `critique-content` | Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc) |
-| `deslopify` | Supprime les tropes IA d'un texte pour lui donner un ton naturel et authentique |
-| `linkedin-post` | Génère un post LinkedIn concis et expert à partir d'un article de blog Liksi |
+| `tech-scribe-plugin` | Outils rédactionnels tech : critique de contenu, deslopify, génération de posts LinkedIn |
 | `playwright-mcp` | Automatisation navigateur via Playwright MCP |
 | `context7-mcp` | Documentation à jour des librairies via Context7 MCP |
 | `sequential-thinking-mcp` | Raisonnement structuré étape par étape via Sequential Thinking MCP |

@@ -1,9 +1,0 @@
-{
-  "name": "critique-content",
-  "description": "Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc)",
-  "version": "1.0.0",
-  "author": {
-    "name": "Mathieu Durand"
-  },
-  "skills": "./skills/"
-}

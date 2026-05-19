@@ -1,0 +1,8 @@
+{
+  "name": "tech-scribe-plugin",
+  "description": "Outils rédactionnels tech : critique de contenu, suppression de slop IA, génération de posts LinkedIn",
+  "version": "1.0.0",
+  "author": {
+    "name": "Mathieu Durand"
+  }
+}
