@@ -2,6 +2,9 @@
   "name": "playwright-mcp",
   "description": "Automatisation navigateur via Playwright MCP",
   "version": "1.0.0",
+  "author": {
+    "name": "Mathieu Durand"
+  },
   "mcpServers": {
     "playwright": {
       "command": "npx",

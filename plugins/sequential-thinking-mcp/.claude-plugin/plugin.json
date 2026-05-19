@@ -2,6 +2,9 @@
   "name": "sequential-thinking-mcp",
   "description": "Raisonnement structuré étape par étape via Sequential Thinking MCP",
   "version": "1.0.0",
+  "author": {
+    "name": "Mathieu Durand"
+  },
   "mcpServers": {
     "sequential-thinking": {
       "command": "npx",

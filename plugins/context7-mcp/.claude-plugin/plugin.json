@@ -2,6 +2,9 @@
   "name": "context7-mcp",
   "description": "Documentation à jour des librairies via Context7 MCP",
   "version": "1.0.0",
+  "author": {
+    "name": "Mathieu Durand"
+  },
   "mcpServers": {
     "context7": {
       "command": "npx",

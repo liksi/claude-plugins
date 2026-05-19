@@ -2,6 +2,9 @@
   "name": "a11y-mcp",
   "description": "Audit d'accessibilité (WCAG) via a11y MCP",
   "version": "1.0.0",
+  "author": {
+    "name": "Mathieu Durand"
+  },
   "mcpServers": {
     "priyankark-a11y-mcp": {
       "command": "npx",
