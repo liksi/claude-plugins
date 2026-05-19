@@ -1,8 +1,0 @@
-{
-  "name": "atlassian-mcp",
-  "description": "Intégration Jira et Confluence via Atlassian MCP",
-  "version": "1.0.0",
-  "author": {
-    "name": "Mathieu Durand"
-  }
-}
