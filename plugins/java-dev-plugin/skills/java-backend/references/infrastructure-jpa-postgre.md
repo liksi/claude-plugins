@@ -12,6 +12,11 @@
     <artifactId>spring-boot-starter-data-jpa</artifactId>
 </dependency>
 <dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-data-jpa-test</artifactId>
+    <scope>test</scope>
+</dependency>
+<dependency>
     <groupId>org.postgresql</groupId>
     <artifactId>postgresql</artifactId>
     <scope>runtime</scope>
@@ -171,6 +176,9 @@ CREATE TABLE commandes (
 ## Tests avec Testcontainers (@DataJpaTest)
 
 ```java
+import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
+import org.springframework.boot.jdbc.test.autoconfigure.AutoConfigureTestDatabase;
+
 @DataJpaTest
 @Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)

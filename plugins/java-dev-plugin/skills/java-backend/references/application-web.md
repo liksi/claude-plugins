@@ -192,6 +192,8 @@ public record CreateCommandeRequest(
 ## Tests spécifiques API (Slice test)
 
 ```java
+import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+
 @WebMvcTest(CommandeController.class)
 class CommandeControllerTest {
     @Autowired
