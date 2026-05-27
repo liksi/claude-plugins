@@ -46,6 +46,7 @@ config/                    # @Configuration globales
 - Le **domain** ne doit JAMAIS dépendre de l'infrastructure ou du server
 - Les **repository interfaces** sont définies dans le domain, implémentées dans l'infrastructure
 - Communication entre couches via des **ports** (interfaces)
+- Les **mappers** sont des classes utilitaires immutables : `final class`, constructeur `private`, toutes les méthodes `static` — pas de `@Component`, pas d'état
 
 
 ## Configuration Spring

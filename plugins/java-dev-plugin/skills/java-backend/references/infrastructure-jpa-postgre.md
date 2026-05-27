@@ -100,30 +100,27 @@ public interface CommandeJpaRepository extends JpaRepository<CommandeEntity, Str
 public class CommandeRepositoryAdapter implements CommandeRepositoryPort {
 
     private final CommandeJpaRepository jpaRepository;
-    private final CommandeEntityMapper mapper;
 
-    public CommandeRepositoryAdapter(CommandeJpaRepository jpaRepository,
-                                     CommandeEntityMapper mapper) {
+    public CommandeRepositoryAdapter(CommandeJpaRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
-        this.mapper = mapper;
     }
 
     @Override
     public Commande save(Commande commande) {
-        final var entity = mapper.toEntity(commande);
+        final var entity = CommandeEntityMapper.toEntity(commande);
         final var saved = jpaRepository.save(entity);
-        return mapper.toDomain(saved);
+        return CommandeEntityMapper.toDomain(saved);
     }
 
     @Override
     public Optional<Commande> findById(String id) {
-        return jpaRepository.findById(id).map(mapper::toDomain);
+        return jpaRepository.findById(id).map(CommandeEntityMapper::toDomain);
     }
 
     @Override
     public List<Commande> findByStatut(StatutCommande statut) {
         return jpaRepository.findByStatut(statut).stream()
-            .map(mapper::toDomain)
+            .map(CommandeEntityMapper::toDomain)
             .toList();
     }
 }
@@ -133,15 +130,19 @@ public class CommandeRepositoryAdapter implements CommandeRepositoryPort {
 
 ## Mapper Entity ↔ Domain
 
-```java
-@Component
-public class CommandeEntityMapper {
+Les mappers sont des classes utilitaires **immutables** : `final class`, constructeur `private`, méthodes `static`.
+Pas de `@Component`, pas d'état.
 
-    public Commande toDomain(CommandeEntity entity) {
+```java
+public final class CommandeEntityMapper {
+
+    private CommandeEntityMapper() {}
+
+    public static Commande toDomain(CommandeEntity entity) {
         return new Commande(entity.getId(), entity.getReference(), entity.getStatut());
     }
 
-    public CommandeEntity toEntity(Commande commande) {
+    public static CommandeEntity toEntity(Commande commande) {
         return new CommandeEntity(commande.reference(), commande.statut());
     }
 }
@@ -192,7 +193,7 @@ class CommandeRepositoryAdapterTest {
 
     @BeforeEach
     void setUp() {
-        adapter = new CommandeRepositoryAdapter(jpaRepository, new CommandeEntityMapper());
+        adapter = new CommandeRepositoryAdapter(jpaRepository);
     }
 
     @Test
