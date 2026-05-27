@@ -2,7 +2,7 @@
   "name": "java-dev-plugin",
   "displayName": "Java Dev Plugin",
   "description": "Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25)",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": {
     "name": "Mathieu Durand"
   }
