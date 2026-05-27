@@ -71,11 +71,49 @@ spring:
 
 ## Construction d'image Docker
 
-Utiliser un Dockerfile pour construire l'image Docker. Le job de la CI se branchera sur le dockerfile pour construire l'image.
+**Demander à l'utilisateur** quelle approche il souhaite avant de générer quoi que ce soit :
+
+> « Pour la construction de l'image Docker, deux approches sont possibles :
+> 1. **Buildpacks** (`spring-boot:build-image`) — aucun Dockerfile à maintenir, image optimisée automatiquement
+> 2. **Dockerfile** — contrôle total, AOT + layering explicites, recommandé si la CI impose un Dockerfile ou si des optimisations de démarrage sont critiques
+>
+> Laquelle préférez-vous ? »
+
+### Option 1 — Buildpacks
 
 ```bash
 ./mvnw spring-boot:build-image
 ```
+
+La CI se branche directement sur cette commande Maven. Aucun Dockerfile n'est créé.
+
+### Option 2 — Dockerfile (AOT + Layering)
+
+Utilise l'image `bellsoft/liberica-openjre-debian:25.0.2-cds`, le layering Spring Boot et le cache AOT pour des démarrages optimisés.
+
+```dockerfile
+# Perform the extraction in a separate builder container
+FROM docker.io/bellsoft/liberica-openjre-debian:25.0.2-cds AS builder
+WORKDIR /builder
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} application.jar
+RUN java -Djarmode=tools -jar application.jar extract --layers --destination extracted
+
+# Runtime container
+FROM docker.io/bellsoft/liberica-openjre-debian:25.0.2-cds
+WORKDIR /application
+COPY --from=builder /builder/extracted/dependencies/ ./
+COPY --from=builder /builder/extracted/spring-boot-loader/ ./
+COPY --from=builder /builder/extracted/snapshot-dependencies/ ./
+COPY --from=builder /builder/extracted/application/ ./
+# AOT cache training
+RUN java -XX:AOTMode=record -XX:AOTConfiguration=app.aotconf -Dspring.context.exit=onRefresh -Dspring.profiles.active=aot-build -jar application.jar
+RUN java -XX:AOTMode=create -XX:AOTConfiguration=app.aotconf -XX:AOTCache=app.aot -jar application.jar && rm app.aotconf
+
+ENTRYPOINT exec java $JAVA_OPTS -Dspring.profiles.active=docker -XX:AOTCache=app.aot -jar application.jar
+```
+
+La CI se branche sur ce Dockerfile pour construire l'image.
 
 
 ## Prometheus — Compteurs d'erreurs API (obligatoire)
