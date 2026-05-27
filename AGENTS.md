@@ -32,6 +32,7 @@ AGENT.md                   # Ce fichier
 | `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
 | `context7-mcp` | MCP server | Documentation à jour des librairies |
 | `sequential-thinking-mcp` | MCP server | Raisonnement structuré étape par étape |
+| `java-dev-plugin` | `java-backend` | Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25) |
 
 ## Ajouter un plugin
 
