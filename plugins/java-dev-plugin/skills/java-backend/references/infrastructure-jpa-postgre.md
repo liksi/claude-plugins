@@ -203,8 +203,7 @@ class CommandeRepositoryAdapterTest {
 
         assertThat(saved.id()).isNotNull();
         final var found = adapter.findById(saved.id());
-        assertThat(found).isPresent();
-        assertThat(found.get().reference()).isEqualTo("REF-001");
+        assertThat(found).hasValueSatisfying(c -> assertThat(c.reference()).isEqualTo("REF-001"));
     }
 
     @Test

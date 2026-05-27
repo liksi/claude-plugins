@@ -233,6 +233,28 @@ server/
 | Assertions | AssertJ pour toutes les assertions |
 | Structure | Arrange-Act-Assert |
 
+### Assertions AssertJ — Optional
+
+```java
+// ✅ Valeur exacte connue
+assertThat(result).hasValue(new Operation("OP-42", "CRM-99"));
+
+// ✅ Présence + vérification partielle
+assertThat(result).hasValueSatisfying(op -> assertThat(op.id()).isEqualTo("OP-42"));
+
+// ✅ Présence seule
+assertThat(result).isPresent();
+
+// ✅ Absence
+assertThat(result).isEmpty();
+
+// ❌ Interdit — optional.get() dans les tests comme en prod
+assertThat(result.get().id()).isEqualTo("OP-42");
+
+// ❌ Interdit — isNull() / isNotNull() sur un Optional
+assertThat(result).isNotNull();
+```
+
 ### Couverture cible
 
 | Couche | Couverture minimale |

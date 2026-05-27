@@ -78,15 +78,13 @@ public class ApiCommandeOperationProvider implements OperationProvider {
             final var iri = insertion.operation();
             final var operationId = iri.substring(iri.lastIndexOf('/') + 1);
 
-            final var operation = commandeRestClient.get()
-                .uri(uriBuilder -> uriBuilder
-                    .path("/operations/{operationId}")
-                    .build(operationId))
-                .retrieve()
-                .body(OperationResponse.class);
-
-            return Optional.ofNullable(operation)
-                .map(op -> new Operation(op.id(), op.opportuniteCrmId()));
+            return Optional.ofNullable(commandeRestClient.get()
+                    .uri(uriBuilder -> uriBuilder
+                            .path("/operations/{operationId}")
+                            .build(operationId))
+                    .retrieve()
+                    .body(OperationResponse.class)
+                    ).map(op -> new Operation(op.id(), op.opportuniteCrmId()));
         } catch (Exception e) {
             errorsCounter.increment();
             throw e;
@@ -209,17 +207,16 @@ class ApiCommandeOperationProviderTest {
 
         final var result = provider.getOperation("INS-1");
 
-        assertThat(result).isNotNull();
-        assertThat(result.id()).isEqualTo("OP-42");
+        assertThat(result).hasValueSatisfying(op -> assertThat(op.id()).isEqualTo("OP-42"));
     }
 
     @Test
-    void shouldReturnNullWhenInsertionHasNoOperation() {
+    void shouldReturnEmptyWhenInsertionHasNoOperation() {
         stubTokenEndpoint();
         wireMockServer.stubFor(get(urlPathEqualTo("/insertions/INS-1"))
             .willReturn(okJson("""{"id":"INS-1","operation":null}""")));
 
-        assertThat(provider.getOperation("INS-1")).isNull();
+        assertThat(provider.getOperation("INS-1")).isEmpty();
     }
 
     @Test

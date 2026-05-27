@@ -52,7 +52,7 @@ public class RabbitConfig {
 
     @Bean
     public MessageConverter jackson3JsonMessageConverter(ObjectMapper objectMapper) {
-        return new Jackson2JsonMessageConverter(objectMapper);
+        return new JacksonJsonMessageConverter(objectMapper);
     }
 
     @Bean
@@ -117,13 +117,8 @@ public record CommandeCreeeMessage(String commandeId, String reference) {}
 class CommandePublisherTest {
 
     @Container
+    @ServiceConnection
     static RabbitMQContainer rabbitMQ = new RabbitMQContainer("rabbitmq:3.12-management");
-
-    @DynamicPropertySource
-    static void rabbitProperties(DynamicPropertyRegistry registry) {
-        registry.add("spring.rabbitmq.host", rabbitMQ::getHost);
-        registry.add("spring.rabbitmq.port", rabbitMQ::getAmqpPort);
-    }
 
     @Autowired
     private CommandePublisher publisher;
