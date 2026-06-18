@@ -30,6 +30,10 @@
     {
       "name": "java-dev-plugin",
       "source": "./plugins/java-dev-plugin"
+    },
+    {
+      "name": "product-engineer-plugin",
+      "source": "./plugins/product-engineer-plugin"
     }
   ]
 }

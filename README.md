@@ -22,3 +22,5 @@ Marketplace privé de plugins Claude Code pour les équipes Liksi.
 | `playwright-mcp` | Automatisation navigateur via Playwright MCP |
 | `context7-mcp` | Documentation à jour des librairies via Context7 MCP |
 | `sequential-thinking-mcp` | Raisonnement structuré étape par étape via Sequential Thinking MCP |
+| `java-dev-plugin` | Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25) |
+| `product-engineer-plugin` | Outils product engineering : rédaction de User Stories fonctionnelles |
