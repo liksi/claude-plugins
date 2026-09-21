@@ -59,7 +59,7 @@ public class CommandeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private @Nullable String id;
 
     @Column(nullable = false)
     private String reference;
@@ -69,7 +69,7 @@ public class CommandeEntity {
     private StatutCommande statut;
 
     @CreationTimestamp
-    private Instant createdAt;
+    private @Nullable Instant createdAt;
 
     // Constructeur no-arg requis par JPA
     protected CommandeEntity() {}
@@ -132,6 +132,8 @@ public class CommandeRepositoryAdapter implements CommandeRepositoryPort {
 ```
 
 > Pas de compteur Prometheus ici — les erreurs de base de données déclenchent des exceptions Spring qui remontent naturellement.
+
+> `Optional` est conservé ici car imposé par Spring Data ; ailleurs, utiliser `@Nullable` — cf. `references/nullability-jspecify.md`.
 
 ## Mapper Entity ↔ Domain
 

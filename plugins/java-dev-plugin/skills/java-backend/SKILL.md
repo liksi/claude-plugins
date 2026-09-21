@@ -16,14 +16,18 @@ Tu es un expert Java/Spring Boot. Applique strictement les préconisations suiva
 - **Publication RabbitMQ** : Voir `references/infrastructure-rabbit.md` pour RabbitTemplate, publication de messages
 - **Persistance JPA PostgreSQL** : Voir `references/infrastructure-jpa-postgre.md` pour JPA/Spring Data, Flyway, Testcontainers avec PostgreSQL
 
+**Ressources complémentaires — Transverse :**
+- **Null-safety (JSpecify / NullAway)** : Voir `references/nullability-jspecify.md`
+
 ## Stack Technique
 
 | Élément | Version/Valeur                                                         |
 | --- |------------------------------------------------------------------------|
 | Java | 25                                                                     |
-| Spring Boot | 4.0.6                                                                  |
+| Spring Boot | 4.1.1                                                                  |
 | Build | Maven                                                                  |
 | Starters communs | starter-actuator, starter-validation, starter-restclient, starter-test |
+| Null-safety | JSpecify + ErrorProne/NullAway                                         |
 
 ## Architecture DDD (Hexagonale)
 
@@ -172,7 +176,8 @@ var result = service.process(data);   // final manquant
 | Principe | Détail |
 | --- | --- |
 | Immutabilité | records, List.of, Map.of |
-| Programmation fonctionnelle | Stream API, Optional, lambdas |
+| Programmation fonctionnelle | Stream API, lambdas |
+| Nullabilité explicite | `@NullMarked` + `@Nullable` (JSpecify) |
 | Pas de boucles | Utiliser Stream au lieu de for/while |
 | Méthodes courtes | Max 20 lignes |
 | Commentaires | Uniquement si logique complexe |
@@ -183,10 +188,17 @@ var result = service.process(data);   // final manquant
 - Gestion centralisée (@ControllerAdvice, @RabbitListenerErrorHandler)
 - Pas de try-catch dans le code métier
 
-### Optional - API fluent obligatoire
+### Nullabilité — JSpecify d'abord
+
+Voir `references/nullability-jspecify.md` pour la configuration ErrorProne/NullAway et les règles détaillées.
+
+Non-null par défaut (`@NullMarked` au niveau package), `@Nullable` sur l'usage de type pour exprimer l'absence de valeur. `Optional<T>` reste réservé aux retours imposés par Spring Data (`findById`, ...).
 
 ```java
-// ✅ Correct
+// ✅ Correct — port domain
+public @Nullable Operation getOperation(String insertionId) { ... }
+
+// ✅ Correct — Optional toléré car imposé par Spring Data
 final var commande = repository.findById(id)
     .orElseThrow(() -> new CommandeNotFoundException(id));
 
@@ -255,6 +267,8 @@ assertThat(result.get().id()).isEqualTo("OP-42");
 // ❌ Interdit — isNull() / isNotNull() sur un Optional
 assertThat(result).isNotNull();
 ```
+
+Pour un retour `@Nullable T` (hors Optional), `isNull()` / `isNotNull()` sont les bonnes assertions.
 
 ### Couverture cible
 

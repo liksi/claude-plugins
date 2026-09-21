@@ -62,7 +62,7 @@ public class ApiCommandeOperationProvider implements OperationProvider {
     }
 
     @Override
-    public Optional<Operation> getOperation(String insertionId) {
+    public @Nullable Operation getOperation(String insertionId) {
         try {
             final var insertion = commandeRestClient.get()
                 .uri(uriBuilder -> uriBuilder
@@ -72,26 +72,27 @@ public class ApiCommandeOperationProvider implements OperationProvider {
                 .body(InsertionResponse.class);
 
             if (insertion == null || insertion.operation() == null) {
-                return Optional.empty();
+                return null;
             }
 
             final var iri = insertion.operation();
             final var operationId = iri.substring(iri.lastIndexOf('/') + 1);
 
-            return Optional.ofNullable(commandeRestClient.get()
+            final var operation = commandeRestClient.get()
                     .uri(uriBuilder -> uriBuilder
                             .path("/operations/{operationId}")
                             .build(operationId))
                     .retrieve()
-                    .body(OperationResponse.class)
-                    ).map(op -> new Operation(op.id(), op.opportuniteCrmId()));
+                    .body(OperationResponse.class);
+
+            return operation == null ? null : new Operation(operation.id(), operation.opportuniteCrmId());
         } catch (Exception e) {
             errorsCounter.increment();
             throw e;
         }
     }
 
-    record InsertionResponse(String id, String operation) {}
+    record InsertionResponse(String id, @Nullable String operation) {}
 
     record OperationResponse(String id,
                              @JsonProperty("opportunite_crm_id") String opportuniteCrmId) {}
@@ -104,10 +105,10 @@ public class ApiCommandeOperationProvider implements OperationProvider {
 - `@Qualifier` pour désigner le bon RestClient quand plusieurs beans existent
 - DTOs comme **records internes** — déclarés dans l'adaptateur, visibilité package
 - **URI builder** pour les URLs avec variables de chemin : `uriBuilder -> uriBuilder.path(...).build(...)`
-- Retourner `Optional<T>` plutôt que `null` depuis le port domain
+- Retourner `@Nullable T` (JSpecify) depuis le port domain — cf. `references/nullability-jspecify.md`
 - Compteur Prometheus obligatoire sur le bloc try/catch englobant
 
-> ❌ **Interdit** : retourner `null` — utiliser `Optional.empty()`
+> ❌ **Interdit** : retourner un type non annoté alors qu'il peut être `null` — annoter `@Nullable`
 > ❌ **Interdit** : appel API sans compteur d'erreur dans l'adaptateur
 > ❌ **Interdit** : avaler l'exception après `.increment()`
 
