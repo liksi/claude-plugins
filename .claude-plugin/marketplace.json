@@ -16,14 +16,6 @@
       "source": "./plugins/playwright-mcp"
     },
     {
-      "name": "context7-mcp",
-      "source": "./plugins/context7-mcp"
-    },
-    {
-      "name": "sequential-thinking-mcp",
-      "source": "./plugins/sequential-thinking-mcp"
-    },
-    {
       "name": "a11y-mcp",
       "source": "./plugins/a11y-mcp"
     },
