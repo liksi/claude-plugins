@@ -13,7 +13,7 @@ Ce skill lit un article de blog et génère un post LinkedIn court, direct, qui 
 2. Extraire depuis le front matter : `title`, `authors`, `tags`, `description`.
 3. Lire l'introduction et les sections principales pour identifier le **vrai apport technique** ou la **surprise** de l'article.
 4. Générer 2 à 3 variantes de post LinkedIn.
-5. Passer chaque variante par le skill `/deslopify` pour supprimer les tournures artificielles avant de les proposer.
+5. Deslopifier chaque variante avant de la proposer : relire le guide [`../deslopify/references/style_guide.md`](../deslopify/references/style_guide.md) et supprimer les tournures artificielles qu'il décrit, sans em dash dans le texte final.
 6. Proposer les variantes deslopifiées à l'utilisateur pour qu'il choisisse.
 
 ## Format du post

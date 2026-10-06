@@ -1,6 +1,6 @@
 ---
 name: critique-content
-description: Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc). Points forts, faiblesses, angles morts, recommandations. Ton de pair exigeant, pas de complaisance.
+description: Critique structurée et honnête d'un contenu tech/conseil (slides, article, doc). Points forts, faiblesses, angles morts, recommandations. Ton de pair exigeant, pas de complaisance. À utiliser quand l'utilisateur demande une critique, une relecture, un avis ou un retour sur un contenu (fichier ou texte collé).
 ---
 
 # Critique de contenu tech/conseil
@@ -17,7 +17,7 @@ Ce skill lit un contenu (slides, article, document) et produit une analyse criti
 4. Évaluer selon les 6 axes ci-dessous.
 5. Produire le rapport critique dans le format défini.
 
-## 5 axes d'évaluation
+## 6 axes d'évaluation
 
 ### 1. Solidité des arguments
 - Les claims sont-ils étayés par des faits, des données, des exemples concrets ?

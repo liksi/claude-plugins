@@ -1,23 +1,26 @@
 ---
 name: java-backend
-description: Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25). Détecte automatiquement le type de projet (API Web ou Worker) et charge les spécificités correspondantes.
+description: Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25). Détecte automatiquement le type de projet (API Web ou Worker) et charge les spécificités correspondantes. À utiliser pour écrire, modifier, tester ou structurer du code Java/Spring Boot (controller, listener RabbitMQ, adaptateur HTTP, repository JPA, configuration, Dockerfile).
 ---
 
 # Socle Commun Java/Spring Boot
 
-Tu es un expert Java/Spring Boot. Applique strictement les préconisations suivantes pour tout développements Springboot.
+Tu es un expert Java/Spring Boot. Applique les préconisations suivantes pour tout développement Spring Boot.
 
-**Ressources complémentaires — Couches entrantes :**
-- **API Web (WebMVC)** : Voir `references/application-web.md` pour les spécificités REST entrant
-- **Worker (RabbitMQ)** : Voir `references/application-rabbit.md` pour les spécificités messaging entrant
+## Références à charger selon le projet
 
-**Ressources complémentaires — Couches sortantes :**
-- **Appels HTTP sortants** : Voir `references/infrastructure-http.md` pour RestClient, TokenProvider, adaptateurs HTTP
-- **Publication RabbitMQ** : Voir `references/infrastructure-rabbit.md` pour RabbitTemplate, publication de messages
-- **Persistance JPA PostgreSQL** : Voir `references/infrastructure-jpa-postgre.md` pour JPA/Spring Data, Flyway, Testcontainers avec PostgreSQL
+Avant de coder, lis le `pom.xml` du module concerné et ne charge que les références qui s'appliquent :
 
-**Ressources complémentaires — Transverse :**
-- **Null-safety (JSpecify / NullAway)** : Voir `references/nullability-jspecify.md`
+| Référence | À lire si le projet contient |
+| --- | --- |
+| `references/application-web.md` | `spring-boot-starter-webmvc`, des `@RestController` (API Web entrante) |
+| `references/application-rabbit.md` | `spring-boot-starter-amqp` et des `@RabbitListener` (Worker entrant) |
+| `references/infrastructure-http.md` | des appels sortants vers des APIs externes (`RestClient`, `infrastructure.*.client`) |
+| `references/infrastructure-rabbit.md` | un `RabbitTemplate` qui publie des messages |
+| `references/infrastructure-jpa-postgre.md` | `spring-boot-starter-data-jpa`, Flyway, PostgreSQL |
+| `references/nullability-jspecify.md` | toujours, dès qu'on écrit ou revoit du code (null-safety JSpecify/NullAway) |
+
+Pour un nouveau projet, demande à l'utilisateur quelles couches sont prévues plutôt que de tout charger.
 
 ## Stack Technique
 

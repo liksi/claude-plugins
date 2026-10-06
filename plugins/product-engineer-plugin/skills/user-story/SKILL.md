@@ -1,6 +1,6 @@
 ---
 name: user-story
-description: Rédige une User Story fonctionnelle (Story / Périmètre fonctionnel / Critères d'acceptation / Jeux de recette / Points à clarifier / Référence technique). Utilise systématiquement ce skill dès que l'utilisateur demande de rédiger, créer, ajouter, compléter ou corriger une US, une story ou une spécification fonctionnelle, même sans mentionner explicitement le format.
+description: Rédige une User Story fonctionnelle (Story / Périmètre fonctionnel / Critères d'acceptation / Jeux de recette / Points à clarifier / Référence technique). Utilise systématiquement ce skill dès que l'utilisateur demande de rédiger, créer, ajouter, compléter ou corriger une US, une story ou une spécification fonctionnelle, ou de documenter un nouveau lot, champ ou besoin (« fais une story pour… », « spec fonctionnelle de… », « documente le besoin de… »), même sans mentionner explicitement le format.
 ---
 
 # Skill — User Story fonctionnelle
@@ -9,11 +9,6 @@ description: Rédige une User Story fonctionnelle (Story / Périmètre fonctionn
 Produire une User Story **fonctionnelle**, en français, exploitable directement par un consommateur métier (DATA, CRM, achats, compta, etc.), à partir d'une demande utilisateur et d'une source de référence (Confluence, spec, ticket).
 
 Une US décrit ce que voit ou manipule l'utilisateur en **langage métier**. Ce n'est ni un cahier des charges, ni une spec technique. Si elle documente un existant, elle ne le re-spécifie pas.
-
-## Quand déclencher
-- L'utilisateur demande de rédiger / créer / compléter / corriger une US.
-- L'utilisateur évoque un nouveau lot, un nouveau champ, un nouveau besoin à spécifier.
-- L'utilisateur dit "fais une story pour…", "spec fonctionnelle de…", "documente le besoin de…".
 
 ## Quand ne PAS l'utiliser
 - **Tâche purement technique** (refactor, dette technique, migration) : pas de valeur utilisateur → utiliser un ticket d'engineering, pas une US.

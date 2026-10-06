@@ -1,6 +1,6 @@
 # Infrastructure — Persistance (Base de Données)
 
-> **Applique ces spécificités uniquement si le projet persiste des données avec spring jpa  (présence de `spring-boot-starter-data-jpa` ou équivalent dans le pom.xml).
+> **Applique ces spécificités uniquement si le projet persiste des données avec Spring Data JPA** (présence de `spring-boot-starter-data-jpa` ou équivalent dans le pom.xml).
 
 ## Dépendances spécifiques
 
