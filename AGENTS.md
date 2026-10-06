@@ -29,10 +29,10 @@ AGENT.md                   # Ce fichier
 | Plugin | Skill principal | Rôle |
 |--------|----------------|------|
 | `tech-scribe-plugin` | `critique-content`, `deslopify`, `linkedin-post` | Outils rédactionnels tech : critique, deslopify, post LinkedIn |
-| `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
-| `context7-mcp` | MCP server | Documentation à jour des librairies |
-| `sequential-thinking-mcp` | MCP server | Raisonnement structuré étape par étape |
 | `java-dev-plugin` | `java-backend` | Développement Java/Spring Boot avec architecture DDD hexagonale (Spring Boot 4, Java 25) |
+| `product-engineer-plugin` | `user-story` | Rédaction de User Stories fonctionnelles |
+| `playwright-mcp` | MCP server | Automatisation navigateur via Playwright |
+| `a11y-mcp` | MCP server | Audit d'accessibilité (WCAG) |
 
 ## Ajouter un plugin
 
