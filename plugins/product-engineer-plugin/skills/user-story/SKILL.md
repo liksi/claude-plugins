@@ -31,6 +31,11 @@ Une US décrit ce que voit ou manipule l'utilisateur en **langage métier**. Ce 
 - préciser pagination/filtres si pertinent
 - renvoyer vers une autre US par lien relatif si dépendance
 
+## Maquettes  *(obligatoire si la story impacte l'UI/UX)*
+![<écran> — existant](maquettes/US-<identifiant>-<écran>-existant.png)
+![<écran> — cible](maquettes/US-<identifiant>-<écran>-cible.png)
+- lien vers la maquette Claude Design : <url>
+
 ## Critères d'acceptation
 - **CA1** : <règle métier vérifiable>
 - **CA2** : …
@@ -87,7 +92,26 @@ Qui utilise réellement la donnée ou la fonctionnalité ?
 ### 4. Lister le périmètre fonctionnel
 Éléments exposés côté utilisateur, en libellés métier. Pagination, filtres, dépendances vers d'autres US.
 
-### 5. Rédiger les critères d'acceptation
+### 5. Produire les maquettes (si impact UI/UX)
+Dès que la story modifie ce que l'utilisateur voit (écran, formulaire, bouton, parcours, libellé affiché), des maquettes sont **obligatoires**.
+
+1. **Application existante** : la maquette part **toujours de l'existant**, jamais d'un écran inventé.
+   - Naviguer dans l'application (Playwright MCP ou navigateur) jusqu'aux écrans concernés et les **capturer** → `maquettes/US-<identifiant>-<écran>-existant.png`.
+   - Si l'URL, l'environnement ou les accès ne sont pas connus, **demander** avant de continuer.
+2. **Créer la maquette cible dans Claude Design** (Artifact, `quickstart` avec `intent: "design"`) :
+   - application existante : importer les captures comme base et ne modifier **que** ce qui relève de la story (même charte, mêmes composants, même structure) ;
+   - nouvelle application : partir du design system du projet s'il existe, sinon le demander.
+3. **Capturer la maquette cible** → `maquettes/US-<identifiant>-<écran>-cible.png`.
+4. **Intégrer les captures dans le ticket** :
+   - fichier US : section `Maquettes` avec les images en lien relatif + lien vers la maquette Claude Design ;
+   - ticket outillé (Jira…) : joindre les captures en pièces jointes et les insérer dans la description.
+
+> **Quality checks**
+> - Chaque écran impacté a une capture **existant** (si application existante) et une capture **cible**.
+> - La maquette cible ne montre que le changement porté par la story — pas de refonte non demandée.
+> - Les libellés de la maquette sont ceux du périmètre fonctionnel et des CA.
+
+### 6. Rédiger les critères d'acceptation
 
 > **Quality checks**
 > - Chaque CA est **vérifiable** (prouvable vrai ou faux).
@@ -95,16 +119,16 @@ Qui utilise réellement la donnée ou la fonctionnalité ?
 > - Les "Étant donné" peuvent s'empiler — c'est normal.
 > - **Alignement** : le "Quand" reflète le "Je veux", le "Alors" reflète le "Afin de".
 
-### 6. Remonter les flous
+### 7. Remonter les flous
 Points à clarifier : champs "Manquant"/"KO"/"TBD", règles non tranchées, cas non observés.
 
-### 7. Ajouter le lien vers la source
+### 8. Ajouter le lien vers la source
 En référence technique — la source de vérité technique vit ailleurs (Confluence, Notion…).
 
-### 8. Écrire le fichier
+### 9. Écrire le fichier
 Selon la convention du projet (emplacement, nommage).
 
-### 9. Valider
+### 10. Valider
 - **Relire à voix haute** : qui, quoi, pourquoi sont-ils évidents ?
 - **Test QA mental** : peut-on écrire des cas de test à partir de chaque CA ?
 - **Critère de taille** : si la story semble trop grosse → la découper.
@@ -115,7 +139,8 @@ Avant de rédiger, repérer dans le projet courant (CLAUDE.md, README, fichiers 
 - la **convention d'identifiant** des US (préfixe, numérotation, lots/epics) ;
 - l'**emplacement** des US (dossier `lots/`, `specs/`, `docs/us/`, etc.) ;
 - la **source de référence** à pointer en "Référence technique" (Confluence, Notion, lien interne) ;
-- les **personas métier** récurrents du projet.
+- les **personas métier** récurrents du projet ;
+- pour les stories UI/UX : l'**URL de l'application existante** (environnement, accès) et le **design system** à utiliser.
 
 Si ces conventions ne sont pas claires, demander avant de produire le fichier.
 
