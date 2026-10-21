@@ -10,8 +10,9 @@ Rewrite or edit text so that it sounds human and genuine, free of the repetitive
 
 1. Read the text provided by the user.
 2. Read the AI writing tropes list in [references/style_guide.md](references/style_guide.md) before editing: it defines the anti-patterns to remove.
-3. Identify the tropes actually present in the text (e.g., magic adverbs, the "delve" family, negative parallelism, false vulnerability, listicles in a trench coat).
-4. Rewrite the text to eliminate them while preserving its meaning, intent, and language. Prefer clear, direct, varied prose; don't swap one trope for another.
+3. If the text is in French, also read [references/style_guide_fr.md](references/style_guide_fr.md): French-specific tics, and where they override `style_guide.md` (French « » quotes, sentence length, fixing repetition).
+4. Identify the tropes actually present in the text (e.g., magic adverbs, the "delve" family, negative parallelism, false vulnerability, listicles in a trench coat).
+5. Rewrite the text to eliminate them while preserving its meaning, intent, and language. Prefer clear, direct, varied prose; don't swap one trope for another.
 
 ## User preferences
 
