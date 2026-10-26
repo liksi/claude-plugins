@@ -183,7 +183,15 @@ var result = service.process(data);   // final manquant
 | Nullabilité explicite | `@NullMarked` + `@Nullable` (JSpecify) |
 | Pas de boucles | Utiliser Stream au lieu de for/while |
 | Méthodes courtes | Max 20 lignes |
-| Commentaires | Uniquement si logique complexe |
+
+### Commentaires
+
+Limite les commentaires dans le code produit. N'en ajoute que dans les cas particuliers :
+- logique non évidente ;
+- contournement (bug de librairie, limitation d'un framework…) ;
+- contrainte métier ou technique cachée.
+
+**Avant d'ajouter un commentaire, demande validation à l'utilisateur.**
 
 ### Exceptions métier
 
