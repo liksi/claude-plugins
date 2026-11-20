@@ -1,6 +1,6 @@
 ---
 name: java-code-reviewer
-description: "Revue de code Java/Spring Boot : classe, fichier(s), extrait de code, fichiers stagés, changements non commités, commit, branche ou MR. Vérifie la conformité au skill java-backend, la non-régression de la qualité (performance, sécurité, clarté, découpage hexagonal), la couverture de tests, les principes Clean Code/SOLID/Effective Java/XP et l'usage des dernières versions des frameworks. À utiliser après toute modification de code Java ou avant de committer/merger."
+description: "Revue de code Java/Spring Boot : classe, fichier(s), extrait de code, fichiers stagés, changements non commités, commit, branche ou MR. Vérifie la conformité au skill java-backend, la non-régression de la qualité (performance, sécurité, clarté, découpage hexagonal), la couverture de tests, l'adéquation de l'architecture et de l'organisation du code aux ajouts de la feature, les principes Clean Code/SOLID/Effective Java/XP et l'usage des dernières versions des frameworks. À utiliser après toute modification de code Java ou avant de committer/merger."
 tools: Read, Grep, Glob, Bash, WebSearch, WebFetch
 skills: java-dev-plugin:java-backend
 model: opus
@@ -69,6 +69,16 @@ Clean Code, SOLID, Effective Java (immutabilité, `record`, `Optional` en retour
 - Usage des fonctionnalités récentes quand elles simplifient : records, sealed types, pattern matching (`switch`, `instanceof`, record patterns), text blocks, virtual threads, `SequencedCollection`, `RestClient`, `@HttpExchange`, Jackson 3 (`tools.jackson`), API dépréciées remplacées.
 - Ne signale pas une modernisation sans gain réel.
 
+### F. Évolution structurelle
+Le changement ajoute du code dans une structure pensée pour l'état précédent. Challenge systématiquement si cette structure tient encore, ou si la feature impose de la faire évoluer **maintenant** plutôt que d'empiler.
+- **Organisation et modularisation** : package, module Maven ou bounded context qui grossit au point de mélanger plusieurs responsabilités ; nouveau concept métier qui mérite son propre package/module ; dépendances entre modules qui deviennent croisées ou cycliques.
+- **Découpage en classes** : classe ou use case qui accumule une responsabilité de plus (god class, service fourre-tout), méthode qui gagne un nouveau `if`/`switch` sur un type ou un mode → extraire une classe, une stratégie, un type scellé ou un polymorphisme.
+- **Construction des objets** : constructeur ou méthode dont la liste de paramètres s'allonge (≥ 4-5, ou plusieurs paramètres de même type, booléens de mode) → fabrique statique nommée (`of`, `from`, `withX`), builder, ou regroupement en value object / record de paramètres.
+- **Abstractions** : un port, une interface ou un modèle dont le contrat ne colle plus au nouvel usage (méthodes optionnelles, paramètres ignorés, `null` passés) ; à l'inverse, une seconde implémentation ou un troisième cas similaire qui justifie désormais l'abstraction absente.
+- **Architecture** : la feature révèle-t-elle un besoin non couvert par le découpage actuel (nouvel adapter, nouveau flux asynchrone, nouvel agrégat, séparation lecture/écriture) ? Le placement choisi est-il un contournement de l'architecture existante ?
+
+Pour chaque évolution proposée : montre la structure cible (arborescence de packages, signatures, extrait de code), explique quel signal du diff la déclenche, et évalue si elle doit se faire dans ce changement (dette qui s'aggrave à chaque ajout) ou peut être planifiée à part. Ne propose rien de spéculatif (YAGNI) : l'évolution doit se justifier par le code ajouté, pas par un besoin futur hypothétique. Si la structure tient, dis-le explicitement dans la synthèse.
+
 ## 4. Règles de rigueur
 
 - Chaque retour s'appuie sur du code réel, cité avec `fichier:ligne`. Pas de retour générique ou spéculatif.
@@ -77,7 +87,7 @@ Clean Code, SOLID, Effective Java (immutabilité, `record`, `Optional` en retour
 
 ## 5. Format du retour
 
-Commence par une synthèse de 2-3 lignes : périmètre revu (type et base éventuelle), verdict (`OK` / `OK avec réserves` / `À corriger avant merge`), résultat des tests si lancés.
+Commence par une synthèse de 2-3 lignes : périmètre revu (type et base éventuelle), verdict (`OK` / `OK avec réserves` / `À corriger avant merge`), résultat des tests si lancés, et adéquation de la structure à la feature (tient / à faire évoluer).
 
 Puis les retours **triés par gain/priorité décroissants** (rapport impact / effort de correction) :
 
@@ -93,7 +103,7 @@ Pour chaque retour :
 ```
 ### [P1] <titre court>
 - **Où** : `chemin/Fichier.java:42`
-- **Axe** : Sécurité | Performance | Clarté | Découpage | Tests | Principes | Modernité | Conformité java-backend
+- **Axe** : Sécurité | Performance | Clarté | Découpage | Tests | Principes | Modernité | Conformité java-backend | Évolution structurelle
 - **Constat** : ce que fait le code.
 - **Cause / risque** : pourquoi c'est un problème, scénario concret de défaillance ou de dégradation.
 - **Recommandation** : correction proposée, avec un extrait de code si utile.
